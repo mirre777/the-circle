@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+p, h1, h2, .input {
+    font-family: "Helvetica Neue";
+    margin: 10px;
+}
+div {
+    margin: 20px auto 20px auto;
+}
+.wrapper {
+    display: grid;
+}
+#header {
+    display: flex;
+    align-items: center;
+    max-width: 60em;
+    /* margin: 40px auto 40px auto; */
+}
+#header p {
+    font-size: 30px;
+}
+#header img {
+    width: 200px;
+    height: 200px;
+}
+#mainDiv {
+    max-width: 60em;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+.formDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input {
+    /* display: block; */
+    margin: 10px auto;
+    border-radius: 15px;
+    min-height: 30px;
+    background-color: rgb(220, 226, 223);
+}
+.submit-button {
+    border-radius: 15px;
+    margin: 10px auto;
+}
