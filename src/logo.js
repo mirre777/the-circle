@@ -1,4 +1,6 @@
 import React from "react";
+import Profilepic from "./profilepic";
+import Uploader from "./uploader";
 
 export function Logo() {
     return (

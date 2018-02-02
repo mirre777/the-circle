@@ -105,8 +105,19 @@ app.post('/login', function(request, response) {
             console.log('   in app.post /login, error in getHashedpw, in .catch', err)
         });
 });
-
-
+app.get('/user', function(request, response) {
+    ///DO tHIS + id to userid
+//get user data with function, pass id
+//then(results)
+//results = results.rows[0]
+//response.json:  first, last, picture
+})
+app.post('/user', function(request, response) {
+//
+})
+app.post('upload', function(request, response) {
+//
+})
 /////check logged in for any other url than /welcome
 //last one
 app.get('*', function(request, response) {

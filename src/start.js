@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Logo } from '../logo';
-import { Welcome } from '../welcome';
+import { Logo } from './logo';
+import { Welcome } from './welcome';
+import App from './app';
 
 //registration or logo? Logged inor not
 let component;
@@ -11,7 +12,7 @@ if (location.pathname == '/welcome') {
 }
 else {
     console.log(' url is not /welcome, so in else');
-    component = <Logo />
+    component = <App />
 }
 console.log(component);
 

@@ -1,18 +1,17 @@
 import React from 'react';
 import App from './app';
-import {Logo} from './logo';
 
-//only job is on click to show uploader
+
+//only job is on click to show uploader. has function so is functional component
 //receive props as parameters, gets passed down. Calls it in certain condition: onClick
 export default function profilePic(props) {
     //no image
-    if(!props.image) {
-        return null;
-        //or image = "./defaultpic.png"
-    }
+    // if(!props.image) {
+    //     return image = "./public/defaultpicture.jpg"
+    // }
     return
     <div>
-        <img className="profilepic" onClick={this.props.showUploader} src={props.image} alt={props.first} {props.last} />
+        <img className="profilepic" onClick={this.props.showUploader} src={props.image || "defaultpicture.jpg"} alt={`${props.first} ${props.last}`} />
         <div><a href={"/logout"}>Unlog</a></div>
     </div>
     //change state of App
