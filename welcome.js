@@ -10,7 +10,7 @@ export function Welcome() {
             <div className="welcomeDiv">
                 <h1>register your person</h1>
                 <Registration />
-                <h1>Log in</h1>
+                <h1>log in</h1>
                 <Login />
             </div>
     )
