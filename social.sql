@@ -8,5 +8,6 @@ CREATE TABLE users (
     picture VARCHAR(255),
     favoritecolor VARCHAR(255),
     hashedpassword VARCHAR(255) NOT NULL,
+    bio TEXT,
     created TIMESTAMP
 );

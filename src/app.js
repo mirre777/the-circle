@@ -8,57 +8,98 @@ import axios from 'axios';
 import Profilepic from "./profilepic";
 import Uploader from "./uploader";
 import {Logo} from './logo';
+import {BrowserRouter, Route} from 'react-router-dom';
+import Profile from './profile';
+import Profileother from './profileother';
 
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        //when user changes profile pic, we need to see update
         this.state = {
-            //now false, until profile pic is clicked
+        //now false, until profile pic is clicked
             uploaderShouldBeVisible: false
         };
-        this.showUploader = this.showUploader.bind(this);
         this.setImage = this.setImage.bind(this);
+        this.toggleUploader = this.toggleUploader.bind(this);
+        this.setBio = this.setBio.bind(this);
     }
-    //called right after first time it call render and put html element in DOM (lifecycle)
+    //called right after first time it calls render and put html element in DOM (lifecycle)
     componentDidMount() {
-        //create server route app.post as well
         axios.get('/user')
         .then(({data}) => {
+            console.log('data: ', data)
             this.setState ({
                 id: data.id,
                 first: data.first,
-                image: data.picture
+                last: data.last,
+                picture: data.picture,
+                favoritecolor: data.favoritecolor,
+                bio: data.bio
             })
         })
     }
-    showUploader() {
+    toggleUploader() {
         this.setState ({
-            uploaderShouldBeVisible: true
+            uploaderShouldBeVisible: !this.state.uploaderShouldBeVisible
         })
     }
-    setImage(pictureUrl) {
+    setImage(filename) {
+        console.log('filename: ', filename);
         this.setState ({
-            image: pictureUrl
+            picture: filename
+        })
+        this.toggleUploader();
+    }
+    setBio(newBio) {
+        console.log('in app.js setBio, newBio: ', newBio)
+        this.setState ({
+            bio: newBio
         })
     }
     render() {
-        console.log('this.state: ', this.state);
         if(!this.state.id) {
             //no id, no information
             //return message 'loading'
             return null;
         }
         return (
-            //when showUploader is called (by clicking on the profile pic), it will change uploaderShouldBeVisible to true
-            <div>
-                <Logo />
-                <Profilepic image={this.state.image} showUploader={() => this.showUploader()} />
-                {this.state.uploaderShouldBeVisible && <Uploader setImage={(pictureUrl) => this.setImage(pictureUrl)} />}
-
-            </div>
-            //
+            //when toggleUploader is called (by clicking on the profile pic), it will change the state of uploaderShouldBeVisible to true
+            //<Logo />
+            <BrowserRouter>
+                <div>
+                    <Route path="/profile" render={() => (
+                        <Profile
+                        id={this.state.id}
+                        first={this.state.first}
+                        last={this.state.last}
+                        favoritecolor={this.state.favoritecolor}
+                        picture={this.state.picture}
+                        bio={this.state.bio}
+                        setBio={this.setBio}
+                        />
+                    )}/>
+                    <Route path="/user/:id" render={(props) => (
+                        <Profileother
+                        id={props.match.params.id}
+                        first={this.state.first}
+                        last={this.state.last}
+                        favoritecolor={this.state.favoritecolor}
+                        picture={this.state.picture}
+                        bio={this.state.bio}
+                        />
+                    )}/>
+                    <Profilepic
+                    picture={this.state.picture}
+                    toggleUploader={() => this.toggleUploader()}
+                    first={this.state.first}
+                    last={this.state.last} />
+                    {this.state.uploaderShouldBeVisible &&
+                        <Uploader
+                            setImage={(filename) => this.setImage(filename)}
+                            toggleUploader={() => this.toggleUploader()} />}
+                </div>
+            </BrowserRouter>
         )
     }
 }

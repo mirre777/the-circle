@@ -24,7 +24,7 @@ export class Registration extends React.Component {
         ///results from server
             .then(({ data }) => {
                 if (data.success) {
-                    location.replace('/')
+                    location.replace('/profile')
                 }
                 else {
                     this.setState ({

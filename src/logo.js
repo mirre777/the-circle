@@ -4,6 +4,6 @@ import Uploader from "./uploader";
 
 export function Logo() {
     return (
-        <div><img src="/logocircle.png" alt="logo circle"></img></div>
+        <div><img className="logo" src="/logocircle.png" alt="logo circle"></img></div>
     )
 }
