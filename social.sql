@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS friendrequests;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -10,4 +11,11 @@ CREATE TABLE users (
     hashedpassword VARCHAR(255) NOT NULL,
     bio TEXT,
     created TIMESTAMP
+);
+
+CREATE TABLE friends (
+    id SERIAL PRIMARY KEY,
+    recipient_id INTEGER NOT NULL,
+    sender_id INTEGER NOT NULL,
+    status INTEGER
 );

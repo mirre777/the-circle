@@ -117,8 +117,68 @@ function getOtherUserInfo(id) {
 }
 
 
+function getFriendStatus(paramsid, userid) {
+    console.log('dbqueries, getFriendStatus');
+     const q = `SELECT * FROM friends WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1)`;
+     const params = [paramsid, userid];
+     return db.query(q, params)
+        .then(results => {
+            console.log('dbqueries, getFriendStatus, in .then, results.rows[0]: ', results.rows[0]);
+            return results.rows[0];
+        })
+        .catch(err => {
+            console.log('dbqueries, getFriendStatus, in .catch, error: ', err);
+        });
+}
+
+
+function makeFriend(userid, paramsid, status) {
+    console.log('dbqueries, makeFriend');
+    const q = `INSERT INTO friends (sender_id, recipient_id, status) VALUES ($1, $2, $3)`;
+    const params = [userid, paramsid, status];
+    return db.query(q, params)
+        .then(results => {
+            console.log('dbqueries, makeFriend, results.rows[0]', results.rows[0]);
+        })
+        .catch(err => {
+            console.log('dbqueries, makeFriend, in .catch', err);
+        });
+}
+
+
+function deleteFriend(paramsid, userid) {
+    console.log('dbqueries, deleteFriend');
+    const q = `DELETE FROM friends WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1)`;
+    const params = [paramsid, userid];
+    return db.query(q, params)
+        .then(results => {
+            console.log('dbqueries, deleteFriend, in .then');
+        })
+        .catch(err => {
+            console.log('dbqueries, deleteFriend, in .catch', err);
+        });
+}
+
+
+function getFriendList(id) {
+    const PENDING = 1, ACCEPTED = 2;
+    console.log('dbqueries, getFriendList');
+    const q = `SELECT users.id, users.first, users.last, users.picture, status
+                FROM users
+                JOIN friends
+                ON (status = ${PENDING} AND recipient_id = $1 AND sender_id = users.id)
+                OR (status = ${ACCEPTED} AND recipient_id = $1 AND sender_id = users.id)
+                OR (status = ${ACCEPTED} AND sender_id = $1 AND recipient_id = users.id)`;
+    const params = [id];
+    return db.query(q, params)
+        .then(results => {
+            console.log('dbqueries, getFriendList, then, results.rows: ', results.rows);
+            return results.rows
+        })
+}
+
 function storePicture(picture, id) {
-    console.log('in dbqueries, in storePicture');
+    console.log('in dbqueries, storePicture');
     const q = `
     UPDATE users
     SET picture = $1
@@ -166,3 +226,7 @@ exports.getUserInfo = getUserInfo;
 exports.getOtherUserInfo = getOtherUserInfo;
 exports.storePicture = storePicture;
 exports.storeBio = storeBio;
+exports.getFriendStatus = getFriendStatus;
+exports.makeFriend = makeFriend;
+exports.deleteFriend = deleteFriend;
+exports.getFriendList = getFriendList;

@@ -1,45 +1,84 @@
 * {
     box-sizing: border-box;
 }
-p, h1, h2, h3, .input {
+
+/* got it from svgbackgrounds.com */
+body {
+    background-color: #a4e3f5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='272' height='272' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0.5'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0.5'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%2383b6c4' fill-opacity='0.5'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100%2C30 0%2C0 200%2C0'/%3E%3Cpolygon fill='url(%23b)' points='100%2C100 0%2C130 0%2C100 200%2C100 200%2C130'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+p, h1, h2, h3, .input, #title-text, .link {
     font-family: "Helvetica Neue";
     margin: 10px;
 }
+
+#title-text {
+    color: white;
+    font-size: 40px;
+}
+
+#logo {
+    -webkit-animation: rotation 14s infinite linear;
+    /* z-index: 2; */
+}
+
+@-webkit-keyframes rotation {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(359deg);
+        }
+    }
+
 div {
     margin: 20px auto 20px auto;
 }
+
 .wrapper {
     display: grid;
 }
+
 #header {
     display: flex;
     align-items: center;
     max-width: 60em;
     /* margin: 40px auto 40px auto; */
 }
-#header p {
-    font-size: 30px;
-}
+
 #header img {
     width: 200px;
     height: 200px;
 }
+
+#navigation {
+
+}
+
 #mainDiv {
     max-width: 60em;
     /* margin-left: auto;
     margin-right: auto; */
 }
+
 .formDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .input {
     /* display: block; */
     margin: 10px auto;
     border-radius: 15px;
     min-height: 30px;
     background-color: rgb(220, 226, 223);
+}
+
+.bio-field {
+    width: 100px;
+    min-height: 200px;
 }
 .uploaddiv {
     display: flex;
@@ -56,51 +95,73 @@ div {
     background: white;
     border: 30px solid black;
 }
+
 /* .profilepicdiv {
     position: absolute;
     left: 10px;
 } */
 .submit-button {
-    border-radius: 10px;
     margin: 10px auto;
 }
-.logout-button {
-    border-radius: 10px;
-    margin: 10px;
-    position: absolute;
-    top: 0;
-    right: 0;
+
+.remove-accept-friend-button {
+
 }
 .upload-close-button {
-    /* border-radius: 10px;
-    margin: 10px; */
+
 }
-.change-profilepic-button {
+
+.writebio-open-button, .my-friends-button, .logout-button, .change-profilepic-button {
+    margin: 1em;
+    border: 2px solid white;
+    box-shadow: 2px 4px rgb(220, 225, 226);
+    background-color: white;
+    border-radius: 15px;
     display: block;
 }
+.change-profilepic-button:active, .my-friends-button:active,  .logout-button:active, .writebio-open-button:active {
+    box-shadow: 0px 0px;
+    outline: 0;
+}
+
 .profilediv {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 30em;
+    height: 30em;
+    border: 2px solid white;
+    box-shadow: 5px 7px rgb(220, 225, 226);
+    background-color: white;
+    border-radius: 15px;
 }
+
+.profilediv:hover {
+    /* border-color: black;
+    transition: 0.25; */
+}
+
 .profilepicdiv {
-    position: absolute;
+    /* position: absolute; */
     display: flex;
     flex-direction: column;
     align-items: center;
     top: 10px;
     right: 10px;
 }
+
 .profilepic {
     width: 150px;
     height: 150px;
+    border-radius: 8px;
 }
+
 .otherprofilepic {
     width: 150px;
     height: 150px;
 }
+
 .logo {
     width: 100px;
     height: 100px;
-
 }

@@ -8,9 +8,11 @@ import axios from 'axios';
 import Profilepic from "./profilepic";
 import Uploader from "./uploader";
 import {Logo} from './logo';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Redirect, Link} from 'react-router-dom';
 import Profile from './profile';
 import Profileother from './profileother';
+//don't wrap it, then it imports the default
+import WrappedFriendlist from './friendlist';
 
 
 export default class App extends React.Component {
@@ -68,6 +70,19 @@ export default class App extends React.Component {
             //<Logo />
             <BrowserRouter>
                 <div>
+                    <div>
+                        <Profilepic
+                        picture={this.state.picture}
+                        toggleUploader={() => this.toggleUploader()}
+                        first={this.state.first}
+                        last={this.state.last} />
+                        {this.state.uploaderShouldBeVisible &&
+                            <Uploader
+                                setImage={(filename) => this.setImage(filename)}
+                                toggleUploader={() => this.toggleUploader()} />}
+                        <Link className="my-friends-button" to='/friends'><h3>My Friends</h3></Link>
+                        <Link className="logout-button" to='/logout'><h3>Logout</h3></Link>
+                    </div>
                     <Route path="/profile" render={() => (
                         <Profile
                         id={this.state.id}
@@ -79,25 +94,13 @@ export default class App extends React.Component {
                         setBio={this.setBio}
                         />
                     )}/>
-                    <Route path="/user/:id" render={(props) => (
-                        <Profileother
-                        id={props.match.params.id}
-                        first={this.state.first}
-                        last={this.state.last}
-                        favoritecolor={this.state.favoritecolor}
-                        picture={this.state.picture}
-                        bio={this.state.bio}
-                        />
-                    )}/>
-                    <Profilepic
-                    picture={this.state.picture}
-                    toggleUploader={() => this.toggleUploader()}
-                    first={this.state.first}
-                    last={this.state.last} />
-                    {this.state.uploaderShouldBeVisible &&
-                        <Uploader
-                            setImage={(filename) => this.setImage(filename)}
-                            toggleUploader={() => this.toggleUploader()} />}
+
+                    <Route path="/user/:id" component={Profileother}
+                    />
+
+                    <Route path="/friends" component={WrappedFriendlist}
+                    />
+
                 </div>
             </BrowserRouter>
         )

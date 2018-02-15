@@ -1,35 +1,43 @@
+//REACT STUFF
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Logo } from './logo';
 import { Welcome } from './welcome';
 import App from './app';
 
-//registration or logo? Logged inor not
+//REDUX STUFF
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxPromise from 'redux-promise';
+import reducer from './reducers';
+//import other component here
+//import { composeWithDevTools } from 'redux-devtools-extension';
+
+
+
+
+const store = createStore(reducer, applyMiddleware(reduxPromise));
+
 let component;
 if (location.pathname == '/welcome') {
-    console.log(' url is /welcome, so call Welcome');
+    console.log(' url is /welcome, so call Welcome component');
     component = <Welcome />
 }
 else {
-    console.log(' url is not /welcome, so in else');
-    component = <App />
+    console.log(' url is not /welcome, so in else, call App component');
+    component = (
+        //pass store as prop to the provider
+        <Provider store={store}>
+            <App />
+            </Provider>
+    );
 }
-console.log(component);
 
+//BEFORE REDUX
 ReactDOM.render(
     component,
     document.querySelector('main')
 );
 
 
-//example
-// function HelloWorld() {
-//     return (
-//         <div>Hello, World!</div>
-//     );
-// }
-
-//register: submit data through axios
-//session.loggedIn
-//success: see page with logo
-//not successfull: registration page
+//later: const socket = io.connect();

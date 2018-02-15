@@ -55,21 +55,18 @@ export default class Profile extends React.Component {
         console.log('this.props from profile.js: ', this.props);
         return (
         <div className="profilediv">
-            <h1>profile</h1>
-            <h3>{this.props.first}</h3>
-            <h3>{this.props.last}</h3>
-            <h3>{this.props.favoritecolor}</h3>
-            <h3>{this.props.bio}</h3>
-            <button className="writebio-open-button" onClick={this.toggleBio}><h3>Write your bio</h3></button>
+            <h1>{this.props.first} {this.props.last}</h1>
+            <h3>Favorite color: {this.props.favoritecolor}</h3>
+            <h3>Bio: {this.props.bio}</h3>
+            <button className="writebio-open-button" onClick={this.toggleBio}><h3>Edit your bio</h3></button>
 
             {this.state.bioShouldBeVisible &&
                 <div>
-                    <input className="input" name="newBio" placeholder="write your bio" onChange={e => this.setFieldValue(e)}/>
+                    <input className="input bio-field" name="newBio" placeholder="write your bio" onChange={e => this.setFieldValue(e)}/>
                     <input className="input" className="submit-button" type="submit" onClick={e => this.writeBio(e)}/>
                     <button className="writebio-close-button" onClick={this.toggleBio}>Close</button>
                 </div>
             }
-            <button className="logout-button"><a href={"/logout"}>Unlog</a></button>
         </div>
     )
         //onclick open bio edit modal

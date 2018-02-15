@@ -12,7 +12,8 @@ export class Login extends React.Component {
     }
     submit(e) {
         e.preventDefault();
-        console.log('in axios.post /login, this: ', this);
+        console.log('login, submit, this: ', this);
+        //pass an object as second parameter, ends up withserver as request.body
         axios.post('/login', {
             email: this.email,
             password: this.password,

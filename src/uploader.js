@@ -37,7 +37,7 @@ export default class Uploader extends React.Component {
                 }
             })
             .catch(err => {
-                console.log('   in .catch, err: ', err)
+                console.log('uploader, uploadFile, in .catch, err: ', err)
             })
     }
     render() {

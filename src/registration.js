@@ -12,7 +12,8 @@ export class Registration extends React.Component {
     }
     submit(e) {
         e.preventDefault();
-        console.log('in axios.post /register, this: ', this);
+        console.log('registration, submit, this: ', this);
+        //pass an object as second parameter, ends up withserver as request.body
         axios.post('/register', {
             id: this.id,
             first: this.first,
