@@ -153,10 +153,10 @@ app.post('/login', function(request, response) {
 
 //LOG OUT
 
-app.post('/logout', function (request, response) {
+app.get('/logout', function (request, response) {
     console.log('app.post /logout');
     request.session = null;
-    response.redirect('/welcome');
+    response.redirect('/welcome#login');
 });
 
 

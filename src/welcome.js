@@ -1,7 +1,7 @@
 import React from "react";
 import { Registration } from "./registration";
 import { Login } from "./login";
-import {HashRouter, Route} from 'react-router-dom';
+import {HashRouter, Route, Link} from 'react-router-dom';
 
 //and link
 
@@ -15,12 +15,12 @@ export class Welcome extends React.Component {
                 <HashRouter>
                     <div className="welcomeDiv">
                         <h1>register your person</h1>
-                        <Route exact path="/register" component={Registration}
+                        <Route exact path="/" component={Registration}
                         />
 
-                        <h1>or log in</h1>
                         <Route path="/login" component={Login}
                         />
+
                     </div>
                 </HashRouter>
             </section>

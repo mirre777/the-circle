@@ -70,7 +70,8 @@ export default class App extends React.Component {
             //<Logo />
             <BrowserRouter>
                 <div>
-                    <div>
+                    <div id="navigation">
+
                         <Profilepic
                         picture={this.state.picture}
                         toggleUploader={() => this.toggleUploader()}
@@ -81,8 +82,10 @@ export default class App extends React.Component {
                                 setImage={(filename) => this.setImage(filename)}
                                 toggleUploader={() => this.toggleUploader()} />}
                         <Link className="my-friends-button" to='/friends'><h3>My Friends</h3></Link>
-                        <Link className="logout-button" to='/logout'><h3>Logout</h3></Link>
+                        <a className="logout-button" href='/logout'><h3>Log out</h3></a>
+
                     </div>
+
                     <Route path="/profile" render={() => (
                         <Profile
                         id={this.state.id}
