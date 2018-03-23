@@ -1,3 +1,27 @@
+# Social Network Project:
+
+A social network project on which users can sign up, say a little about themselves, and become friends with other users. A single-page application made with React.
+
+Webpack, the tool we use to compile our code, will start with src/start.js. Any js file that start.js imports from (as well as the files that those files import from) will be included in the bundle.
+
+
+# Features:
+
+1. Login, registration and log out button.
+
+2. Profile of the logged in user.
+
+3. Edit option in the user's profile.
+
+4. Upload image option in the user's profile.
+
+5. Options to: send friend request invitation, cancel it, accept it and unfriend it.
+
+
+# Screenshots
+
+![alt text](LINK)
+
 # Using this repo in development
 
 The `src` directory is where all of your client-side Javascript code should live. The file `src/start.js` is the entry point for your React application. All other files you use will either be imported by `start.js` or imported by files that are imported `start.js` (or imported by files that are imported by files that are imported by `start.js`, etc.).
