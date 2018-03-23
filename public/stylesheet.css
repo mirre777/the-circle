@@ -10,30 +10,31 @@ body {
 }
 @-webkit-keyframes colour{
 	0%{
-		background-color: #a4e3f5;
+		background-color: #fffc00;
 	}
 	20%{
 		background-color: #2aebeb;
 	}
 	40%{
-		background-color: #43b9b3;
+		background-color: #00a3ff;
 	}
 	60%{
-		background-color: #3ea357;
+		background-color: #3a609a;
 	}
 
 	80%{
-		background-color: ##3a609a;
+		background-color: ##ff8a00;
 	}
 
 	100%{
-		background-color: #a4e3f5;
+		background-color: #fffc00;
 	}
 }
 
 p, h1, h2, h3, .input, #title-text, .link {
     font-family: "Helvetica Neue";
     margin: 10px;
+    font-weight: bold;
 }
 
 #title-text {
@@ -98,7 +99,7 @@ div {
     margin: 10px auto;
     border-radius: 15px;
     min-height: 30px;
-    background-color: rgb(220, 226, 223);
+    background-color: rgba(220, 226, 223, 0.6);
 }
 
 .bio-field {
@@ -140,7 +141,7 @@ div {
     margin: 1em;
     border: 2px solid white;
     box-shadow: 2px 4px rgb(220, 225, 226);
-    background-color: white;
+    background-color: rgba(220, 226, 223, 0.7);
     border-radius: 15px;
     display: block;
 }
@@ -163,8 +164,9 @@ a h3{
     height: 30em;
     border: 2px solid white;
     box-shadow: 5px 7px rgb(220, 225, 226);
-    background-color: white;
+    background-color: rgba(220, 226, 223, 0.7);
     border-radius: 15px;
+    margin-bottom: 40px;
 }
 
 .profilediv:hover {

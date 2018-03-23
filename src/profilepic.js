@@ -7,7 +7,7 @@ import App from './app';
 export default function profilePic(props) {
     var defaultpicture;
     console.log('props from profilepic.js: ', props)
-    if (props.picture ==  'https://s3.amazonaws.com/spicedling/null') {
+    if (props.picture ==  'https://s3.amazonaws.com/socialnetwork-spiced/null') {
         defaultpicture = '/defaultpicture.jpg'
     }
     else {

@@ -36,12 +36,12 @@ export class Login extends React.Component {
 render() {
     return (
         <div className="formDiv">
-
+            <h1>Log in</h1>
             {this.state.error && <div className="errordiv">Something is not right. Check carefully.</div>}
             <input className="input" name="email" placeholder="email" onChange={e => this.setFieldValue(e)} />
             <input className="input" type="password" name="password" placeholder="password" onChange={e => this.setFieldValue(e)} />
             <input className="input" className="submit-button" type="submit" onClick={e => this.submit(e)}/>
-            <h1>or <Link to="/">register</Link></h1>
+            <h1>or <Link to="/">Register</Link></h1>
         </div>
     )
 }

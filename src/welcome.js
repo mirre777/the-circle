@@ -14,7 +14,7 @@ export class Welcome extends React.Component {
             <section>
                 <HashRouter>
                     <div className="welcomeDiv">
-                        <h1>register your person</h1>
+        
                         <Route exact path="/" component={Registration}
                         />
 
