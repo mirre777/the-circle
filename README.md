@@ -20,7 +20,27 @@ Webpack, the tool we use to compile our code, will start with src/start.js. Any 
 
 # Screenshots
 
-![alt text](LINK)
+**the background color changes gradually.
+
+![alt text](https://github.com/mirre777/the-circle/blob/master/Screen%20Shot%202018-03-23%20at%2021.28.35.png)
+
+
+
+![alt text](https://github.com/mirre777/the-circle/blob/master/Screen%20Shot%202018-03-23%20at%2021.29.21.png)
+
+
+
+![alt text](https://github.com/mirre777/the-circle/blob/master/Screen%20Shot%202018-03-23%20at%2021.37.09.png)
+
+
+
+![alt text](https://github.com/mirre777/the-circle/blob/master/Screen%20Shot%202018-03-23%20at%2021.37.26.png)
+
+
+
+![alt text](https://github.com/mirre777/the-circle/blob/master/Screen%20Shot%202018-03-23%20at%2020.14.23.png)
+
+
 
 # Using this repo in development
 
