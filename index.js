@@ -50,7 +50,7 @@ app.use(compression());
 app.use(express.static('./public'));
 app.use(cookieParser());
 app.use(cookieSession ({
-    secret: require('./secrets.json').sessSecret,
+    secret: require('./secret.json').sessSecret,
     maxAge: 1000 * 60 * 60 * 24 * 14
 }));
 app.use(bodyParser.urlencoded ({
